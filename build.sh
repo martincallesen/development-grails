@@ -1,0 +1,1 @@
+docker build -t martincallesen/ssh-dev-env-groovy .
