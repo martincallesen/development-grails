@@ -1,1 +1,1 @@
-docker run --name ssh-dev-env-groovy -d -p 22:22 martincallesen/ssh-dev-env-groovy
+docker run --name development-grails -d -p 22:22 martincallesen/development-grails

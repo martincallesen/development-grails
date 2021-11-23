@@ -1,1 +1,1 @@
-docker build -t martincallesen/ssh-dev-env-groovy .
+docker build -t martincallesen/development-grails .

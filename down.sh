@@ -1,1 +1,1 @@
-docker stop ssh-dev-env-groovy && docker rm ssh-dev-env-groovy
+docker stop development-grails && docker rm development-grails
