@@ -1,0 +1,1 @@
+docker stop ssh-dev-env-groovy && docker rm ssh-dev-env-groovy
