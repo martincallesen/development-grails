@@ -11,7 +11,17 @@ RUN apt install zip unzip curl git zsh wget sudo -y
 
 USER test
 
+RUN mkdir ~/.gradle
+
+RUN mkdir ~/.grails
+
+RUN mkdir ~/projects
+
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
+RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
 RUN curl -s "https://get.sdkman.io" | bash
 
