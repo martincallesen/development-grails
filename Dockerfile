@@ -10,7 +10,7 @@ ARG TZ="CET"
 
 RUN apt update
 
-RUN apt install zip unzip curl git zsh wget locales sudo -y
+RUN apt install zip unzip curl git zsh wget locales fontconfig libfreetype6 sudo -y
 
 #Setting local
 RUN sed -i -e 's/# da_DK.UTF-8 UTF-8/da_DK.UTF-8 UTF-8/' /etc/locale.gen
