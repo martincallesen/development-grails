@@ -1,1 +1,1 @@
-docker run --name development-grails -d -p 22:22 martincallesen/development-grails
+docker run --name development-grails -v /var/run/docker.sock:/var/run/docker.sock -d -p 22:22 martincallesen/development-grails

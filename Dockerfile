@@ -12,6 +12,11 @@ RUN apt update
 
 RUN apt install zip unzip curl git zsh wget locales fontconfig libfreetype6 sudo -y
 
+#Install docker
+RUN apt install docker docker-compose sudo -y
+
+RUN usermod -aG docker test
+
 #Setting local
 RUN sed -i -e 's/# da_DK.UTF-8 UTF-8/da_DK.UTF-8 UTF-8/' /etc/locale.gen
 
