@@ -7,6 +7,7 @@ ARG GRAILS_VERSION="3.3.14"
 ARG LOCALE="da_DK.UTF-8"
 ARG LANGUAGE="da_DK:da"
 ARG TZ="CET"
+ARG USER="test"
 
 RUN apt update
 
@@ -15,7 +16,7 @@ RUN apt install zip unzip curl git zsh wget locales fontconfig libfreetype6 sudo
 #Install docker
 RUN apt install docker docker-compose sudo -y
 
-RUN usermod -aG docker test
+RUN usermod -aG docker $USER
 
 #Setting local
 RUN sed -i -e 's/# da_DK.UTF-8 UTF-8/da_DK.UTF-8 UTF-8/' /etc/locale.gen
@@ -32,7 +33,7 @@ ENV LC_ALL $LOCALE
 #Setting timezone
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-USER test
+USER $USER
   
 #Install oh-my-zsh with plugins
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
