@@ -11,7 +11,7 @@ ARG USER="test"
 
 RUN apt update
 
-RUN apt install zip unzip curl git zsh wget locales fontconfig libfreetype6 sudo -y
+RUN apt install zip unzip curl git zsh wget locales fontconfig libfreetype6 rsync sudo -y
 
 #Install docker
 RUN apt install docker docker-compose sudo -y
