@@ -49,8 +49,6 @@ RUN mkdir ~/.gradle
 
 RUN mkdir ~/.grails
 
-RUN mkdir ~/projects
-
 #Install grails tools
 RUN curl -s "https://get.sdkman.io" | bash
 
