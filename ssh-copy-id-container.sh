@@ -1,1 +1,0 @@
-ssh-copy-id -i ~/.ssh/id_rsa.pub test@localhost -p 8080
