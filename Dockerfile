@@ -56,4 +56,15 @@ RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
     rm -rf $HOME/.sdkman/archives/* && \
     rm -rf $HOME/.sdkman/tmp/*"
 
+# Add oh-my-zsh to /usr/share so all additional users can use it
+RUN mv /root/.oh-my-zsh /usr/share && \
+mv /usr/share/.oh-my-zsh /usr/share/oh-my-zsh && \
+mv /root/.zshrc /usr/share/oh-my-zsh && \
+mv /usr/share/oh-my-zsh/.zshrc /usr/share/oh-my-zsh/zshrc && \
+sed -i 's|export ZSH="'"$HOME"'/.oh-my-zsh"|export ZSH="\/usr\/share\/oh-my-zsh"|g' /usr/share/oh-my-zsh/zshrc
+
+# Add oh-my-zsh for root
+RUN ln /usr/share/oh-my-zsh/zshrc /etc/skel/.zshrc && \
+cp /usr/share/oh-my-zsh/zshrc /root/.zshrc
+
 ENTRYPOINT ["tail", "-f", "/dev/null"]
