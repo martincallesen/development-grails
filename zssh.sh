@@ -1,1 +1,1 @@
-docker exec -it development-grails zsh
+ssh test@localhost -t zsh

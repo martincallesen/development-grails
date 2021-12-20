@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM martincallesen/ssh-server
 
 ARG JAVA_VERSION="8.0.292.hs-adpt"
 ARG GROOVY_VERSION="2.4.5"
@@ -8,6 +8,7 @@ ARG LOCALE="da_DK.UTF-8"
 ARG LANGUAGE="da_DK:da"
 ARG TZ="CET"
 
+USER root
 #Setting timezone
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -63,8 +64,9 @@ mv /root/.zshrc /usr/share/oh-my-zsh && \
 mv /usr/share/oh-my-zsh/.zshrc /usr/share/oh-my-zsh/zshrc && \
 sed -i 's|export ZSH="'"$HOME"'/.oh-my-zsh"|export ZSH="\/usr\/share\/oh-my-zsh"|g' /usr/share/oh-my-zsh/zshrc
 
-# Add oh-my-zsh for root
+# Add oh-my-zsh for user
 RUN ln /usr/share/oh-my-zsh/zshrc /etc/skel/.zshrc && \
 cp /usr/share/oh-my-zsh/zshrc /root/.zshrc
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+# Add sdkman and oh-my-zsh for user test
+RUN cp /usr/share/oh-my-zsh/zshrc /home/ubuntu/.zshrc
