@@ -46,15 +46,15 @@ RUN mkdir ~/.gradle
 RUN mkdir ~/.grails
 
 #Install grails tools
-RUN curl -s "https://get.sdkman.io" | bash
-
-RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
+RUN bash -c "export SDKMAN_DIR="/usr/share/sdkman" && \
+    curl -s https://get.sdkman.io | bash && \
+    source /usr/share/sdkman/bin/sdkman-init.sh && \
     yes | sdk install java $JAVA_VERSION && \
     yes | sdk install groovy $GROOVY_VERSION && \    
     yes | sdk install gradle $GRADLE_VERSION && \    
     yes | sdk install grails $GRAILS_VERSION && \        
-    rm -rf $HOME/.sdkman/archives/* && \
-    rm -rf $HOME/.sdkman/tmp/*"
+    rm -rf /usr/share/sdkman/archives/* && \
+    rm -rf /usr/share/sdkman/tmp/*"
 
 # Add oh-my-zsh to /usr/share so all additional users can use it
 RUN mv /root/.oh-my-zsh /usr/share && \
